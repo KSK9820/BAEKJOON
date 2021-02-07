@@ -6,36 +6,31 @@ long long int num1, num2;
 long long int result;
 
 
-
 int binary_search(long long int* arr, long long int left, long long int right) {
-	
+
 	while (left != right) {
-		if (arr[left] + arr[right] > 0) {
-			if (abs(arr[left] + arr[right]) < abs(result)) {
-				result = arr[left] + arr[right];
-				num1 = arr[left];
-				num2 = arr[right];
-			}
-			right--;
-		}
-		else if (arr[left] + arr[right] == 0) {
+		if (abs(arr[left] + arr[right]) < abs(result)) {
 			result = arr[left] + arr[right];
 			num1 = arr[left];
 			num2 = arr[right];
-			return 0;
 		}
+
+		if (arr[left] + arr[right] > 0) {
+			right--;
+		}
+		//else if (arr[left] + arr[right] == 0) {
+			//result = arr[left] + arr[right];
+			//num1 = arr[left];
+			//num2 = arr[right];
+			//return 0;
+		//}
 		else {
-			if (abs(arr[left] + arr[right]) < abs(result)) {
-				result = arr[left] + arr[right];
-				num1 = arr[left];
-				num2 = arr[right];
-			}
 			left++;
 		}
 
 	}
 	return 0;
-	
+
 }
 
 int main(void) {
@@ -54,10 +49,7 @@ int main(void) {
 	binary_search(arr, 0, length - 1);
 	cout << num1 << " " << num2 << endl;
 
-	//배열 메모리 해제
 	delete[] arr;
-
-
 
 	return 0;
 }
