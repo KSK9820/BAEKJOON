@@ -5,22 +5,19 @@
 using namespace std;
 
 int t, n;
-//int startx, starty;
-//int endx, endy;
 vector<pair<int, int>> cs;
 
 bool BFS(int x, int y) {
 	
-	// (x,y) Å¥ »ı¼º
+	// (x,y) í ìƒì„±
 	queue<pair<int, int>> q;
 	q.push(make_pair(x, y));
 
-	//¹æ¹® ¿©ºÎ Ã¼Å©
+	//ë°©ë¬¸ ì—¬ë¶€ ì²´í¬
 	vector<bool> visited;
 	visited = vector<bool>(n + 2, false);
-	//ÃÊ±â ¹æ¹® Ã¼Å©
+	//ì´ˆê¸° ë°©ë¬¸ ì²´í¬
 	visited[0] = true;
-
 
 	while (!q.empty()) {
 		int point_x = q.front().first;
@@ -34,7 +31,7 @@ bool BFS(int x, int y) {
 			if (visited[i] == false && ((next_x - point_x) + (next_y - point_y)) <= 1000) {
 				q.push(make_pair(cs[i].first, cs[i].second));
 				visited[i] = true;
-				//true¸é ´Ù½Ã º¼ ÇÊ¿ä°¡ ¾øÀ¸´Ï±î
+				//trueë©´ ë‹¤ì‹œ ë³¼ í•„ìš”ê°€ ì—†ìœ¼ë‹ˆê¹Œ
 			}
 		}
 	}
@@ -48,19 +45,12 @@ int main(void) {
 		cin >> n;
 		cs.clear();
 		
-//		cin >> startx >> starty;
-//		cs.push_back(make_pair(startx, starty));
-		
 		for (int i = 0; i < n+2; i++) {
 			int x, y;
 			cin >> x >> y;
 			cs.push_back(make_pair(x, y));
 		}
 
-//		cin >> endx >> endy;
-//		cs.push_back(make_pair(endx, endy));
-
-//		bool result = BFS(startx, starty);
 		bool result = BFS(cs[0].first, cs[0].second);
 		
 		if (result == true) {
@@ -72,4 +62,3 @@ int main(void) {
 	}
 	//return 0;
 }
-
