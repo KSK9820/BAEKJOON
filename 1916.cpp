@@ -60,7 +60,6 @@ int main(void) {
 	for (int i = 0; i < m; i++) {
 		int a, b, c;
 		cin >> a >> b >> c;
-		
 		graph[a][b] = min(graph[a][b], c);
 	}
 	
